@@ -6,7 +6,12 @@ class UnifyFormat
   end
   def self.unify_format
     puts "フォーマットした結果は、以下の通りです。"
-    puts @@phone_number
+    case @@phone_number
+    when /0[7-9]0(-| |)[1-9]\d{3}(-| |)\d{4}/
+      puts "携帯電話です"
+    else
+      puts "何にも一致しないです"
+    end
   end
 end
 

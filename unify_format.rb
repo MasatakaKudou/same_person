@@ -8,7 +8,7 @@ class UnifyFormat
     puts "フォーマットした結果は、以下の通りです。"
     case @@phone_number
     when /0[7-9]0(-| |)[1-9]\d{3}(-| |)\d{4}/
-      puts "携帯電話です"
+      puts @@phone_number.gsub(/-| |/, '')
     else
       puts "何にも一致しないです"
     end

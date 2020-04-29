@@ -7,12 +7,12 @@ class PhoneNumberConvert
       /0\d{4}(-| |)[2-9](-| |)\d{4}/, #固定電話 [3]
       /0[5789]0(-| |)[1-9]\d{3}(-| |)\d{4}/, #携帯電話 or IP電話 [4]
     ]
-    case phone_number
-    when patterns[0], patterns[1], patterns[2], patterns[3], patterns[4]
-      phone_number.gsub(/-| |/, '')
-    else
-      nil
+    for pattern in patterns do
+      if phone_number.match(pattern)
+        return phone_number.gsub(/-| |/, '')
+      end
     end
+    return nil
   end
 end
 
@@ -29,5 +29,5 @@ p phone_number.convert('0111-21-1111') #固定電話
 p phone_number.convert('0111 21 1111') #固定電話
 p phone_number.convert('01111-2-1111') #固定電話
 p phone_number.convert('01111 2 1111') #固定電話
-p phone_number.convert('11-1111-1111') #固定電話
+p phone_number.convert('11-1111-1111') #nilパターン
 p phone_number.convert('11 1111 1111') #nilパターン

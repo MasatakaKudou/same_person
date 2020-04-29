@@ -12,20 +12,21 @@ class PhoneNumberConvert
       when patterns[0], patterns[1], patterns[2], patterns[3], patterns[4]
         phone_number.gsub(/-| |/, '')
       else
-        "何にも一致しないです"
+        nil
       end
     }
   end
 end
 
 phone_number = PhoneNumberConvert.new
-puts phone_number.convert(
+p phone_number.convert(
   [
     '090-1111-1111', '090 1111 1111', #携帯電話 [0]
     '050-1111-1111', '050 1111 1111', #IP電話 [1]
     '01-2111-1111', '01 2111 1111', #固定電話 [2]
     '011-211-1111', '011 211 1111', #固定電話 [3]
     '0111-21-1111', '0111 21 1111', #固定電話 [4]
-    '01111-2-1111', '01111 2 1111' #固定電話 [5]
+    '01111-2-1111', '01111 2 1111', #固定電話 [5]
+    '11-1111-1111', '11 1111 1111' #nilパターン
   ]
 )
